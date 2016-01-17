@@ -116,10 +116,10 @@ public class Game : MonoBehaviour {
 	public void OnGameOver(int _achievedHeight, int _playedBrontoID) {
 
 		//Highscore
-		bool isHighScore = false;
+		//bool isHighScore = false;
 		if (_achievedHeight > gameData.highScore) {
 			gameData.highScore = _achievedHeight;
-			isHighScore = true;
+			//isHighScore = true;
 		}
 
 		Save ();
