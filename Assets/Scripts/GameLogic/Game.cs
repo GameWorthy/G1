@@ -6,9 +6,11 @@ using GameWorthy;
 
 
 public class Game : MonoBehaviour {
+	
+	public const byte MAX_COLUMNS = 8;
 
 	public static Game Instance = null;
-
+	
 	private GameData gameData = null;
 
 	[SerializeField] private GameMusic gameMusic = null;

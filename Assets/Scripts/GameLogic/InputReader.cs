@@ -2,17 +2,22 @@
 using System.Collections;
 
 public class InputReader : MonoBehaviour {
-	
+
+	private bool firstTouch = true;
+
 	void Update () {
 
-		if (Input.GetMouseButtonDown (0)) {
+		if (Input.GetKeyDown (KeyCode.Space)) {
 			onTap.Invoke();
 		}
 
 		if (Input.touchCount > 0) {
-			if (Input.GetTouch (0).phase == TouchPhase.Began) {
-				onTap.Invoke();
+			if(firstTouch) {
+				firstTouch = false;
+				onTap.Invoke ();
 			}
+		} else {
+			firstTouch = true;
 		}
 	}
 	

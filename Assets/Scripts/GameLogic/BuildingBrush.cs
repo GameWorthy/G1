@@ -2,15 +2,12 @@
 using System.Collections;
 
 public class BuildingBrush : MonoBehaviour {
-
-
-	private const byte MAX_COLUMNS = 5;
 	
+
 	[SerializeField] private float startingTick = 0.5f;
 	[SerializeField] private float tick = 0.5f;
 	[SerializeField] private GameObject brushBlock = null;
-	[SerializeField] private GameObject buildingBlock = null;
-	[SerializeField] Transform buildingOrigin = null;
+	[SerializeField] private FloorBuilder floorBuilder = null;
 
 	//no more than 255 lives...
 	[SerializeField] private byte lives = 3;
@@ -19,16 +16,16 @@ public class BuildingBrush : MonoBehaviour {
 		get {return lives;}
 		set {lives = value; UpdateLives();}
 	}
-
-	private Building building = new Building();
-
+	
 	private float currentTick = 999f;
 	private int dir = 1;
 	private int currentIndex = 0;
+	private Vector2 startingOffset = Vector2.zero;
 	
 	void Start() {
 		tick = startingTick;
 		InputReader.onTap += AddFloor;
+		startingOffset = transform.position;
 		UpdateLives ();
 	}
 	
@@ -37,7 +34,7 @@ public class BuildingBrush : MonoBehaviour {
 		if (currentTick > tick) {
 			currentTick = 0;
 			
-			if(currentIndex + Lives >= MAX_COLUMNS) {
+			if(currentIndex + Lives >= Game.MAX_COLUMNS) {
 				dir = -1;
 			}
 			else if(currentIndex < 1){
@@ -45,8 +42,12 @@ public class BuildingBrush : MonoBehaviour {
 			}
 			
 			currentIndex += dir;
-			transform.position = GameHelper.BuildingToWorldSpace(currentIndex,building.TotalFloors,-MAX_COLUMNS * 0.5f);
+			SetBrushPosition();
 		}
+	}
+
+	void SetBrushPosition() {
+		transform.position = GameHelper.BuildingToWorldSpace(currentIndex,floorBuilder.Building.TotalFloors,-Game.MAX_COLUMNS * 0.5f) + startingOffset;
 	}
 
 	//TODO: Refactor this so it doens't kill and instantiate everything
@@ -60,15 +61,21 @@ public class BuildingBrush : MonoBehaviour {
 			Vector2 position = GameHelper.BuildingToWorldSpace(i,0,-0.5f);
 			GameObject brushGmo = Instantiate(brushBlock) as GameObject;
 			brushGmo.transform.parent = transform;
-			brushGmo.transform.position = position;
+			brushGmo.transform.localPosition = position;
 		}
 	}
 
 	
 	void AddFloor() {
 
+		if (Lives <= 0) {
+			return;
+		}
+
+		tick *= 0.85f;
+
 		//translate our position into a floor
-		byte[] newFloor = new byte[MAX_COLUMNS];//0,0,0,0,0
+		byte[] newFloor = new byte[Game.MAX_COLUMNS];//0,0,0,0,0
 		int lifeDecrease = lives;
 		int indexIncrease = currentIndex;
 		while (lifeDecrease > 0) {
@@ -77,20 +84,32 @@ public class BuildingBrush : MonoBehaviour {
 			indexIncrease++;
 		}
 
-		//adding the floor to the building
-		//keep in mind that the newFloor parameter will be updated as it is a reference
-		building.AddFloor (newFloor);
-		//building.LogFloors();
+		//adding the floor to the building trough the floor builder
+		Lives = (byte)floorBuilder.BuildFloor (newFloor);
 
+		currentIndex = Random.value > 0.5f ? 0 : (int)Game.MAX_COLUMNS - Lives;
+		currentTick = 0;
+		SetBrushPosition ();
 
-		//Adding the visuals
-		for (int i = 0; i < newFloor.Length; i++) {
-			if(newFloor[i] == 1) {
-				Vector2 fallPosition = GameHelper.BuildingToWorldSpace(i,building.TotalFloors - 1,-MAX_COLUMNS * 0.5f);
-				GameObject apartmentGmo = Instantiate(buildingBlock) as GameObject;
-				apartmentGmo.transform.parent = buildingOrigin;
-				apartmentGmo.transform.localPosition = fallPosition;
-			}
+		if (lives <= 0) {
+			StartCoroutine(PLACEHOLDERRESTART());
+		}
+	}
+
+	void OnDestroy() {
+		InputReader.onTap -= AddFloor;
+	}
+
+	IEnumerator PLACEHOLDERRESTART() {
+		yield return new WaitForSeconds (2);
+		LevelLoader.Instance.LoadScene ("GameScene");
+	}
+	
+
+	void SetBrushEnable(bool _value) {
+		Debug.Log (transform.childCount);
+		for (int i = 0; i < transform.childCount; i++) {
+			transform.GetChild(i).gameObject.SetActive(_value);
 		}
 	}
 
