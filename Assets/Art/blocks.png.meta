@@ -1,11 +1,14 @@
 fileFormatVersion: 2
 guid: 99a85e06304f640f2a22ffcb868c35df
-timeCreated: 1452376525
+timeCreated: 1453271882
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: blocks_0
     21300002: blocks_1
+    21300004: blocks_2
+    21300006: blocks_3
+    21300008: blocks_4
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -69,6 +72,36 @@ TextureImporter:
         y: 490
         width: 15
         height: 15
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: blocks_2
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 238
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: blocks_3
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 238
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: blocks_4
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 82
+        width: 250
+        height: 75
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
