@@ -102,7 +102,7 @@ public class BuildingBrush : MonoBehaviour {
 
 	IEnumerator PLACEHOLDERRESTART() {
 		yield return new WaitForSeconds (2);
-		LevelLoader.Instance.LoadScene ("GameScene");
+		LevelLoader.Instance.LoadScene ("GameSceneSingleplayer");
 	}
 	
 

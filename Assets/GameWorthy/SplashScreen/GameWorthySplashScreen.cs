@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 namespace GameWorthy {
 
@@ -9,7 +10,7 @@ namespace GameWorthy {
 		[SerializeField] private Renderer bg = null;
 
 		public void LoadNextScene() {
-			Application.LoadLevel (sceneToLoad);
+			SceneManager.LoadScene (sceneToLoad);
 			bg.gameObject.SetActive (false);
 		}
 	}

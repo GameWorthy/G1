@@ -11,7 +11,7 @@ public class SceneNavigator : MonoBehaviour {
 		int isFirstTime = PlayerPrefs.GetInt ("firstTimeLoadingGameScene", 0);
 
 		if (isFirstTime > 0) {
-			LevelLoader.Instance.LoadScene ("GameScene");
+			LevelLoader.Instance.LoadScene ("GameSceneSingleplayer");
 		} else {
 			PlayerPrefs.SetInt("firstTimeLoadingGameScene",1);
 			LoadTutorial();
@@ -32,6 +32,14 @@ public class SceneNavigator : MonoBehaviour {
 
 	public void LoadTutorial() {
 		LevelLoader.Instance.LoadScene ("TutorialScene");
+	}
+
+	public void LoadLobbyList() {
+		LevelLoader.Instance.LoadScene ("LobbyList");
+	}
+
+	public void LoadLobby() {
+		LevelLoader.Instance.LoadScene ("Lobby");
 	}
 
 	public void OpenSupport() {

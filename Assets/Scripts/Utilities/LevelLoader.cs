@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviour {
 
@@ -28,7 +29,7 @@ public class LevelLoader : MonoBehaviour {
 	IEnumerator ILoad(string _name) {
 		sr.DOColor (Color.black,transitionTime);
 		yield return new WaitForSeconds(transitionTime);
-		Application.LoadLevel (_name);
+		SceneManager.LoadScene (_name);
 	}
 
 	void OnLevelWasLoaded(int level) {

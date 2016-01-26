@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 9609710cfbb5b4c4c962aec6bac0f4cc
-timeCreated: 1450248867
+timeCreated: 1453760754
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -45,6 +45,7 @@ TextureImporter:
     21300076: facebook
     21300078: twitter
     21300080: gw
+    21300082: versus
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -58,7 +59,7 @@ TextureImporter:
   bumpmap:
     convertToNormalMap: 0
     externalNormalMap: 0
-    heightScale: .25
+    heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
   grayScaleToAlpha: 0
@@ -83,7 +84,7 @@ TextureImporter:
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
-  spritePivot: {x: .5, y: .5}
+  spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 50
   alphaIsTransparency: 1
@@ -99,8 +100,9 @@ TextureImporter:
         width: 13
         height: 13
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 4, y: 5, z: 4, w: 5}
+      outline: []
     - name: medal
       rect:
         serializedVersion: 2
@@ -109,8 +111,9 @@ TextureImporter:
         width: 12
         height: 19
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: trophy
       rect:
         serializedVersion: 2
@@ -119,8 +122,9 @@ TextureImporter:
         width: 17
         height: 19
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: cog
       rect:
         serializedVersion: 2
@@ -129,8 +133,9 @@ TextureImporter:
         width: 10
         height: 10
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: back
       rect:
         serializedVersion: 2
@@ -139,8 +144,9 @@ TextureImporter:
         width: 13
         height: 12
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: play
       rect:
         serializedVersion: 2
@@ -149,8 +155,9 @@ TextureImporter:
         width: 6
         height: 12
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: home
       rect:
         serializedVersion: 2
@@ -159,8 +166,9 @@ TextureImporter:
         width: 15
         height: 12
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: skull
       rect:
         serializedVersion: 2
@@ -169,8 +177,9 @@ TextureImporter:
         width: 15
         height: 18
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: gift
       rect:
         serializedVersion: 2
@@ -179,8 +188,9 @@ TextureImporter:
         width: 19
         height: 20
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: pause
       rect:
         serializedVersion: 2
@@ -189,8 +199,9 @@ TextureImporter:
         width: 9
         height: 12
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: check
       rect:
         serializedVersion: 2
@@ -199,8 +210,9 @@ TextureImporter:
         width: 21
         height: 22
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: lock
       rect:
         serializedVersion: 2
@@ -209,8 +221,9 @@ TextureImporter:
         width: 13
         height: 18
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: arrow
       rect:
         serializedVersion: 2
@@ -219,8 +232,9 @@ TextureImporter:
         width: 19
         height: 21
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: frame
       rect:
         serializedVersion: 2
@@ -229,8 +243,9 @@ TextureImporter:
         width: 58
         height: 15
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 6, y: 5, z: 6, w: 4}
+      outline: []
     - name: ident
       rect:
         serializedVersion: 2
@@ -239,8 +254,9 @@ TextureImporter:
         width: 14
         height: 13
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 3, y: 6, z: 3, w: 6}
+      outline: []
     - name: thin_cut
       rect:
         serializedVersion: 2
@@ -249,8 +265,9 @@ TextureImporter:
         width: 1
         height: 13
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 1, z: 0, w: 1}
+      outline: []
     - name: star_record
       rect:
         serializedVersion: 2
@@ -259,8 +276,9 @@ TextureImporter:
         width: 42
         height: 16
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: white
       rect:
         serializedVersion: 2
@@ -269,8 +287,9 @@ TextureImporter:
         width: 1
         height: 1
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: medal_tag
       rect:
         serializedVersion: 2
@@ -279,8 +298,9 @@ TextureImporter:
         width: 29
         height: 16
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: sock_medal
       rect:
         serializedVersion: 2
@@ -289,8 +309,9 @@ TextureImporter:
         width: 27
         height: 27
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: UI_0
       rect:
         serializedVersion: 2
@@ -299,8 +320,9 @@ TextureImporter:
         width: 1
         height: 1
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: upgrade_0
       rect:
         serializedVersion: 2
@@ -309,8 +331,9 @@ TextureImporter:
         width: 10
         height: 10
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: upgrade_1
       rect:
         serializedVersion: 2
@@ -319,8 +342,9 @@ TextureImporter:
         width: 11
         height: 10
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: upgrade_2
       rect:
         serializedVersion: 2
@@ -329,8 +353,9 @@ TextureImporter:
         width: 11
         height: 10
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: upgrade_3
       rect:
         serializedVersion: 2
@@ -339,8 +364,9 @@ TextureImporter:
         width: 9
         height: 9
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: upgrade_4
       rect:
         serializedVersion: 2
@@ -349,8 +375,9 @@ TextureImporter:
         width: 9
         height: 11
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: Title
       rect:
         serializedVersion: 2
@@ -359,8 +386,16 @@ TextureImporter:
         width: 42
         height: 34
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -21, y: 17}
+        - {x: -21, y: -3}
+        - {x: -13, y: -16}
+        - {x: -12, y: -17}
+        - {x: 15, y: -17}
+        - {x: 21, y: -7}
+        - {x: 21, y: 17}
     - name: dialog_box
       rect:
         serializedVersion: 2
@@ -369,8 +404,9 @@ TextureImporter:
         width: 13
         height: 16
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 4, y: 8, z: 4, w: 5}
+      outline: []
     - name: facebook
       rect:
         serializedVersion: 2
@@ -379,8 +415,9 @@ TextureImporter:
         width: 6
         height: 10
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: twitter
       rect:
         serializedVersion: 2
@@ -389,8 +426,9 @@ TextureImporter:
         width: 6
         height: 10
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: gw
       rect:
         serializedVersion: 2
@@ -399,8 +437,21 @@ TextureImporter:
         width: 6
         height: 10
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: versus
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 23
+        width: 7
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    outline: []
   spritePackingTag: 
   userData: 
   assetBundleName: 

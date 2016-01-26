@@ -11,6 +11,7 @@ public class TextUpdater : MonoBehaviour {
 	/// </summary>
 	/// <param name="_index">_index.</param>
 	public void SetText(string _value, int _index = -1) {
+
 		if (_index < 0) {
 			foreach (Text t in textToSet) {
 				t.text = _value;

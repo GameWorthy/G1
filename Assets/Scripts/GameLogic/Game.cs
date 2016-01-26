@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using DG.Tweening;
 using GameWorthy;
+using UnityEngine.SceneManagement;
 
 
 public class Game : MonoBehaviour {
@@ -55,7 +56,7 @@ public class Game : MonoBehaviour {
 		ApplySoundSettings ();
 
 		//HACK: find a better way to handle on game loading event
-		PlayGameMusic (Application.loadedLevel == 2);
+		PlayGameMusic (SceneManager.GetActiveScene().buildIndex == 2);
 	}
 
 	void OnLevelWasLoaded(int level) {
