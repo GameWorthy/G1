@@ -35,10 +35,6 @@ public class SceneNavigator : MonoBehaviour {
 	}
 
 	public void LoadLobbyList() {
-		LevelLoader.Instance.LoadScene ("LobbyList");
-	}
-
-	public void LoadLobby() {
 		LevelLoader.Instance.LoadScene ("Lobby");
 	}
 
