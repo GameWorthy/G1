@@ -31,6 +31,11 @@ public class Game : MonoBehaviour {
 		private set {gameData.lastUnlockedSkin = value;}
 	}
 
+	public string LastConnectedHostIp {
+		get;
+		set;
+	}
+
 	void Awake() {
 		DontDestroyOnLoad (gameObject);
 		if (Instance == null) {
@@ -77,7 +82,6 @@ public class Game : MonoBehaviour {
 	}
 	
 	void Update() {
-
 		if (Input.GetKeyDown (KeyCode.R)) {
 			ResetGameData();
 		}

@@ -13,6 +13,10 @@ public class LobbyListScene : NetworkLobbyManager {
 	[SerializeField] private GameObject playerLobbyMenu;
 	[SerializeField] private RectTransform playerListTransform;
 	[SerializeField] private Text errorText;
+	[SerializeField] private InputField nameInput;
+	[SerializeField] private InputField ipInput;
+	[SerializeField] private Text lobbyName;
+
 
 	private bool isHosting = false;
 	private PlayerTag localPlayer = null;
@@ -22,18 +26,26 @@ public class LobbyListScene : NetworkLobbyManager {
 	}
 
 	void Start () {
-		//this.networkAddress = "127.0.0.1";
-		//this.networkPort = 7755;
-		DisplayErrorMessage ("");
-		Debug.Log (NetworkManager.singleton.networkAddress);
+
+		DisplayErrorMessage (Network.player.ipAddress + ":" + networkPort);
+
+		nameInput.text = PlayerPrefs.GetString ("player_name","Player1");
+		nameInput.onEndEdit.AddListener(delegate{SaveName();});
+
+		if (Game.Instance.LastConnectedHostIp == null) {
+			Game.Instance.LastConnectedHostIp = Network.player.ipAddress;
+		}
+		ipInput.text = Game.Instance.LastConnectedHostIp;
+		ipInput.onEndEdit.AddListener (delegate{SaveIp();});
 	}
 
-	public void ClickedHost() {
-		NetworkClient nc = this.StartHost ();
+	void SaveName() {
+		PlayerPrefs.SetString ("player_name", nameInput.text);
+	}
 
-		if (nc == null) {
-			DisplayErrorMessage ("A Host is already running on port " + this.networkPort + ". Click join to join the match.");
-		}
+	void SaveIp() {
+		this.networkAddress = ipInput.text;
+		Game.Instance.LastConnectedHostIp = ipInput.text;
 	}
 
 	public void SetLocalPlayer(PlayerTag _tag) {
@@ -58,9 +70,18 @@ public class LobbyListScene : NetworkLobbyManager {
 		Destroy (this.gameObject);
 	}
 
+	public void ClickedHost() {
+		this.networkAddress = ipInput.text;
+		NetworkClient nc = this.StartHost ();
+		
+		if (nc == null) {
+			DisplayErrorMessage ("A Host is already running on port " + this.networkPort + ". Click join to join the match.");
+		}
+	}
+
 	public void ClickedJoin() {
 		StartClient ();
-		DisplayErrorMessage ("...Looking for a match...");
+		DisplayErrorMessage ("...Looking for a match... at: " + this.networkAddress + ":" + this.networkPort);
 	}
 
 	void DisplayErrorMessage(string _m) {
@@ -85,13 +106,24 @@ public class LobbyListScene : NetworkLobbyManager {
 	public override void OnClientConnect(NetworkConnection conn)
 	{
 		base.OnClientConnect(conn);
+
 		SetOnPlayerLobbyVisual (true);
+
+		lobbyName.text = Game.Instance.LastConnectedHostIp;
+
+		StartCoroutine (DelayedSetingName ());
 	}
 
-	public override void OnMatchCreate(UnityEngine.Networking.Match.CreateMatchResponse matchInfo)
-	{
-		base.OnMatchCreate(matchInfo);
-		print ("Match created: " + matchInfo.networkId);
+	IEnumerator DelayedSetingName() {
+		yield return new WaitForSeconds (1);
+		foreach (NetworkLobbyPlayer nlp in lobbySlots) {
+			PlayerTag pTag = (PlayerTag)nlp;
+			if (nlp != null) {
+				if (pTag.playerName != "") {
+					pTag.OnMyName (pTag.playerName);
+				}
+			}
+		}
 	}
 
 	public void SetPlayerTagParent(PlayerTag _tag) {

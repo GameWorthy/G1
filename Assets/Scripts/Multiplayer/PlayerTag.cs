@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 using UnityEngine.Networking;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 public class PlayerTag : NetworkLobbyPlayer {
 	
-	[SerializeField] private Text playerName;
+	[SerializeField] private Text playerNameText;
 	[SerializeField] private Image background;
 	[SerializeField] private Image ready;
 
@@ -14,15 +16,12 @@ public class PlayerTag : NetworkLobbyPlayer {
 		set;
 	}
 
-	public string PlayerName {
-		get { return playerName.text; }
-		set { playerName.text = value; }
-	}
+	[SyncVar(hook = "OnMyName")]
+	public string playerName = "";
 
 	void SetAsLocalClient() {
 		background.color = Color.green;
 	}
-
 
 	public override void OnClientReady(bool _ready) {
 		base.OnClientReady (_ready);
@@ -46,7 +45,8 @@ public class PlayerTag : NetworkLobbyPlayer {
 			return;
 		
 		LobbyListScene.Instance.SetPlayerTagParent (this);
-		playerName.text = "Player " + this.netId.ToString();
+
+		playerNameText.text = "Player " + netId;
 
 		SetReady (false);
 	}
@@ -54,5 +54,12 @@ public class PlayerTag : NetworkLobbyPlayer {
 	public override void OnStartLocalPlayer() {
 		base.OnStartLocalPlayer();
 		LobbyListScene.Instance.SetLocalPlayer (this);
+		OnMyName(PlayerPrefs.GetString ("player_name","Player " + netId));
+	}
+
+	//----------
+	public void OnMyName(string _name) {
+		playerName = _name;
+		playerNameText.text = _name;
 	}
 }
