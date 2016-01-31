@@ -31,6 +31,11 @@ public class Game : MonoBehaviour {
 		private set {gameData.lastUnlockedSkin = value;}
 	}
 
+	public int Tick {
+		get;
+		set;
+	}
+
 	public string LastConnectedHostIp {
 		get;
 		set;

@@ -1,14 +1,20 @@
 fileFormatVersion: 2
 guid: 99a85e06304f640f2a22ffcb868c35df
-timeCreated: 1453271882
+timeCreated: 1454186890
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: blocks_0
-    21300002: blocks_1
-    21300004: blocks_2
-    21300006: blocks_3
-    21300008: blocks_4
+    21300000: standard
+    21300002: blocks_0
+    21300004: blocks_1
+    21300006: blocks_glow
+    21300008: white
+    21300010: target_0
+    21300012: target_1
+    21300014: target_2
+    21300016: target_3
+    21300018: target_4
+    21300020: floor
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -22,7 +28,7 @@ TextureImporter:
   bumpmap:
     convertToNormalMap: 0
     externalNormalMap: 0
-    heightScale: .25
+    heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
   grayScaleToAlpha: 0
@@ -47,7 +53,7 @@ TextureImporter:
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
-  spritePivot: {x: .5, y: .5}
+  spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 15
   alphaIsTransparency: 1
@@ -55,56 +61,128 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
+    - name: standard
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 110
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: blocks_0
       rect:
         serializedVersion: 2
-        x: 14
-        y: 490
+        x: 19
+        y: 110
         width: 15
         height: 15
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: blocks_1
       rect:
         serializedVersion: 2
-        x: 30
-        y: 490
+        x: 35
+        y: 110
         width: 15
         height: 15
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: blocks_2
+      outline: []
+    - name: blocks_glow
       rect:
         serializedVersion: 2
-        x: 3
-        y: 238
+        x: 52
+        y: 106
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: white
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 109
         width: 15
         height: 15
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: blocks_3
+      outline: []
+    - name: target_0
       rect:
         serializedVersion: 2
-        x: 139
-        y: 238
-        width: 15
-        height: 15
+        x: 5
+        y: 95
+        width: 10
+        height: 10
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: blocks_4
+      outline: []
+    - name: target_1
       rect:
         serializedVersion: 2
-        x: 3
-        y: 82
-        width: 250
-        height: 75
+        x: 16
+        y: 95
+        width: 10
+        height: 10
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: target_2
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 95
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: target_3
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 95
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: target_4
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 95
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: floor
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 86
+        width: 33
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    outline: []
   spritePackingTag: 
   userData: 
   assetBundleName: 

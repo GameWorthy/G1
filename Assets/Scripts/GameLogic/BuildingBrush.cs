@@ -32,6 +32,8 @@ public class BuildingBrush : MonoBehaviour {
 	void Update () {
 		currentTick += Time.deltaTime;
 		if (currentTick > tick) {
+
+			Game.Instance.Tick++;
 			currentTick = 0;
 			
 			if(currentIndex + Lives >= Game.MAX_COLUMNS) {

@@ -52,6 +52,7 @@ public class PlayerTag : NetworkLobbyPlayer {
 	}
 
 	public override void OnStartLocalPlayer() {
+
 		base.OnStartLocalPlayer();
 		LobbyListScene.Instance.SetLocalPlayer (this);
 		OnMyName(PlayerPrefs.GetString ("player_name","Player " + netId));

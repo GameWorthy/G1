@@ -3,12 +3,14 @@ using UnityEngine.Networking;
 using System;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LobbyListScene : NetworkLobbyManager {
 
 	public static LobbyListScene Instance = null;
 
 	[Header("CLIENT UI")]
+	[SerializeField] private GameObject homeButton;
 	[SerializeField] private GameObject lobbyMenu;
 	[SerializeField] private GameObject playerLobbyMenu;
 	[SerializeField] private RectTransform playerListTransform;
@@ -20,6 +22,7 @@ public class LobbyListScene : NetworkLobbyManager {
 
 	private bool isHosting = false;
 	private PlayerTag localPlayer = null;
+	private int connectedClients = 0;
 
 	void OnEnable() {
 		Instance = this;
@@ -97,14 +100,12 @@ public class LobbyListScene : NetworkLobbyManager {
 
 //---------------- SERVER MESSAGES------------------
 
-	public override void OnStartHost()
-	{
+	public override void OnStartHost() {
 		base.OnStartHost();
 		isHosting = true;
 	}
 
-	public override void OnClientConnect(NetworkConnection conn)
-	{
+	public override void OnClientConnect(NetworkConnection conn) {
 		base.OnClientConnect(conn);
 
 		SetOnPlayerLobbyVisual (true);
@@ -113,6 +114,12 @@ public class LobbyListScene : NetworkLobbyManager {
 
 		StartCoroutine (DelayedSetingName ());
 	}
+
+	public override void OnClientDisconnect(NetworkConnection conn) {
+		
+	}
+
+
 
 	IEnumerator DelayedSetingName() {
 		yield return new WaitForSeconds (1);
@@ -131,4 +138,25 @@ public class LobbyListScene : NetworkLobbyManager {
 		_tag.transform.localScale = Vector3.one;
 	}
 
+	public override void OnLobbyServerPlayersReady() {
+
+		/*
+		foreach(NetworkLobbyPlayer nl in lobbySlots) {
+			if (nl != null) {
+				if (!nl.readyToBegin) {
+					return;
+				}
+			}
+		}
+		*/
+
+		//Only if all players are ready
+		base.OnLobbyServerPlayersReady ();
+
+	}
+
+	public override void OnClientSceneChanged(NetworkConnection conn) {
+		int scene = SceneManager.GetActiveScene ().buildIndex;
+		this.GetComponent<Canvas> ().enabled = (scene != 2);
+	}
 }

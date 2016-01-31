@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using DG.Tweening;
 
 public class FloorBuilder : MonoBehaviour {
 
@@ -35,7 +36,11 @@ public class FloorBuilder : MonoBehaviour {
 				Vector2 fallPosition = GameHelper.BuildingToWorldSpace(i,building.TotalFloors - 1,-Game.MAX_COLUMNS * 0.5f);
 				GameObject apartmentGmo = Instantiate(buildingBlock) as GameObject;
 				apartmentGmo.transform.parent = buildingOrigin;
-				apartmentGmo.transform.localPosition = fallPosition;
+
+				//TODO: True to be replaced with animation
+				//Once networking is in, this will be toggled
+				apartmentGmo.GetComponent<Apartment> ().PlaceApartment (fallPosition, true);
+				Camera.main.GetComponent<GameCamera> ().Shake (0.1f,0.15f);
 			}
 		}
 
@@ -52,5 +57,7 @@ public class FloorBuilder : MonoBehaviour {
 
 		return placedFloors;
 	}
+
+
 
 }
