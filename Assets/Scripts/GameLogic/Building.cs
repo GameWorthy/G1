@@ -18,7 +18,7 @@ public class Building {
 	/// <returns>The floor.</returns>
 	/// <param name="_newFloor">_new floor.</param>
 	public byte AddFloor(byte _newFloor) {
-		if (floors.Count > 1) {//if we have a previous floor, subtract it
+		if (floors.Count >= 1) {//if we have a previous floor, subtract it
 			_newFloor = (byte)(_newFloor & floors [floors.Count - 1]);
 		}
 		if (_newFloor > 0) {

@@ -71,7 +71,7 @@ public class FloorBuilder : MonoBehaviour {
 		if (scoreText != null) {
 			scoreText.SetText(building.TotalFloors.ToString());
 		}
-
+			
 		return _newFloor;
 	}
 

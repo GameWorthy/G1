@@ -78,8 +78,6 @@ public class BuildingBrush : MonoBehaviour {
 		if (tick > 0.035f) {
 			tick *= 0.90f;
 		}
-		print (tick);
-
 
 		byte newFloor = 0;
 
