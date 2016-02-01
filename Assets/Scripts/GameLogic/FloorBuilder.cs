@@ -10,6 +10,8 @@ public class FloorBuilder : MonoBehaviour {
 	[SerializeField] private TextUpdater scoreText = null;
 	private Building building = new Building();
 
+	private Color buildingColor = Color.white;
+
 	public Building Building {
 		get {return building;}
 		private set {building = value;}
@@ -26,6 +28,10 @@ public class FloorBuilder : MonoBehaviour {
 		}
 	}
 
+	public void SetColor(Color _color) {
+		buildingColor = _color;
+	}
+
 	public int BuildFloor(byte[] _newFloor) {
 		//keep in mind that the newFloor parameter will be updated as it is a reference
 		building.AddFloor (_newFloor);
@@ -39,7 +45,9 @@ public class FloorBuilder : MonoBehaviour {
 
 				//TODO: True to be replaced with animation
 				//Once networking is in, this will be toggled
-				apartmentGmo.GetComponent<Apartment> ().PlaceApartment (fallPosition, true);
+				Apartment apartment = apartmentGmo.GetComponent<Apartment> ();
+				apartment.PlaceApartment (fallPosition, true);
+				apartment.UpdateColors (buildingColor);
 				Camera.main.GetComponent<GameCamera> ().Shake (0.1f,0.15f);
 			}
 		}

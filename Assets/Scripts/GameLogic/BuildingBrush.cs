@@ -27,6 +27,7 @@ public class BuildingBrush : MonoBehaviour {
 		InputReader.onTap += AddFloor;
 		startingOffset = transform.position;
 		UpdateLives ();
+		floorBuilder.SetColor (Game.Instance.PlayerColor);
 	}
 	
 	void Update () {
@@ -74,7 +75,7 @@ public class BuildingBrush : MonoBehaviour {
 			return;
 		}
 
-		tick *= 0.85f;
+		tick *= 0.90f;
 
 		//translate our position into a floor
 		byte[] newFloor = new byte[Game.MAX_COLUMNS];//0,0,0,0,0

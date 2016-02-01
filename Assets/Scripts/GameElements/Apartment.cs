@@ -6,6 +6,8 @@ public class Apartment : MonoBehaviour {
 
 	[SerializeField] private float fallTime = 0.15f;
 	[SerializeField] private ParticleSystem landParticle = null;
+	[SerializeField] private SpriteRenderer block1 = null;
+	[SerializeField] private SpriteRenderer block2 = null;
 
 	void Awake() {
 		landParticle.Stop ();
@@ -18,6 +20,12 @@ public class Apartment : MonoBehaviour {
 		} else {
 			transform.localPosition = _pos;
 		}
+	}
+
+	public void UpdateColors(Color _color) {
+		landParticle.startColor = _color;
+		block1.color = _color;
+		block2.color = _color;
 	}
 
 	void Update() {

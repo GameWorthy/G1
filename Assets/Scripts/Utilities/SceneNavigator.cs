@@ -14,12 +14,14 @@ public class SceneNavigator : MonoBehaviour {
 			LevelLoader.Instance.LoadScene ("GameSceneSingleplayer");
 		} else {
 			PlayerPrefs.SetInt("firstTimeLoadingGameScene",1);
-			LoadTutorial();
+			//LoadTutorial();
+			LoadSkins();//So player can select a color
 		}
 	}
 
 	public void LoadSkins() {
-		LevelLoader.Instance.LoadScene ("BrontoStore");
+		PlayerPrefs.SetInt("firstTimeLoadingGameScene",1);//player already loaded skin
+		LevelLoader.Instance.LoadScene ("SkinStore");
 	}
 
 	public void LoadGameOver() {
@@ -43,19 +45,16 @@ public class SceneNavigator : MonoBehaviour {
 	}
 	
 	public void LoadFacebook() {
-		Game.Instance.UnlockSkin (16);
 		Game.Instance.Save ();
 		Application.OpenURL ("https://www.facebook.com/GameWorthy");
 	}
 
 	public void LoadTwitter() {
-		Game.Instance.UnlockSkin (17);
 		Game.Instance.Save ();
 		Application.OpenURL ("https://twitter.com/game_worthy");
 	}
 
 	public void LoadGameWorthy() {
-		Game.Instance.UnlockSkin (18);
 		Game.Instance.Save ();
 		Application.OpenURL ("http://gameworthystudios.com/");
 	}

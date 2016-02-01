@@ -21,14 +21,14 @@ public class Game : MonoBehaviour {
 		set {gameData.muted = value;}
 	}
 
-	public int SelectedBronto {
-		get {return gameData.selectedSkin;}
-		set {gameData.selectedSkin = value;}
-	}
-
-	public int LastUnlockedBrontoSkin {
-		get {return gameData.lastUnlockedSkin;}
-		private set {gameData.lastUnlockedSkin = value;}
+	public Color PlayerColor {
+		get {return new Color(gameData.r, gameData.g, gameData.b);}
+		set {
+			gameData.r = value.r;
+			gameData.g = value.g;
+			gameData.b = value.b;
+			gameData.a = value.a;
+		}
 	}
 
 	public int Tick {
@@ -89,6 +89,7 @@ public class Game : MonoBehaviour {
 	void Update() {
 		if (Input.GetKeyDown (KeyCode.R)) {
 			ResetGameData();
+			print ("---RESET----");
 		}
 	}
 
@@ -96,33 +97,10 @@ public class Game : MonoBehaviour {
 		MemoryCard.Save (gameData, "game");
 	}
 
-	public bool OwnSkin(int _id) {
-		foreach (int i in gameData.ownedSkins) {
-			if(i == _id) {
-				return true;
-			}
-		}
-		return false;
-	}
-
 	public void ResetGameData() {
 		PlayerPrefs.SetInt("firstTimeLoadingGameScene",0);
 		MemoryCard.Save (new GameData(), "game");
 		gameData = (GameData) MemoryCard.Load ("game");
-	}
-
-	/// <summary>
-	/// Unlocks a skin by a given ID. DOES NOT SAVE AFTER UNLOCKING!
-	/// </summary>
-	/// <param name="_id">_id.</param>
-	public void UnlockSkin (int _id) {
-		int currentOwnedTotal = gameData.ownedSkins.Length;
-		int[] newOwned = new int[currentOwnedTotal + 1];
-		for (int i=0; i < currentOwnedTotal; i++) {
-			newOwned[i] = gameData.ownedSkins[i];
-		}
-		newOwned [currentOwnedTotal] = _id;
-		gameData.ownedSkins = newOwned;
 	}
 
 	public void OnGameOver(int _achievedHeight, int _playedBrontoID) {
@@ -153,10 +131,11 @@ public class Game : MonoBehaviour {
 
 [Serializable]
 public class GameData {
-	public int[] ownedSkins = new int[]{0};
-	public int selectedSkin = 0;
+	public float r = 0;
+	public float g = 0;
+	public float b = 0;
+	public float a = 1;
 	public int highScore = 0;
-	public int lastUnlockedSkin = 0;
 	public bool muted = false;
 }
 
