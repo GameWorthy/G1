@@ -77,18 +77,19 @@ public class BuildingBrush : MonoBehaviour {
 
 		tick *= 0.90f;
 
-		//translate our position into a floor
-		byte[] newFloor = new byte[Game.MAX_COLUMNS];//0,0,0,0,0
-		int lifeDecrease = lives;
-		int indexIncrease = currentIndex;
-		while (lifeDecrease > 0) {
-			lifeDecrease--;
-			newFloor[indexIncrease] = 1;
-			indexIncrease++;
+		byte newFloor = 0;
+
+		//creates our floor, if 3 lives it would be: 00000111
+		for (byte b = 0; b < lives; b++) {
+			newFloor <<= 1;
+			newFloor |= 1;
 		}
+		//shifts the 111's to the correct spot
+		byte toShift = (byte)(Game.MAX_COLUMNS - Lives - currentIndex);
+		newFloor <<= toShift;
 
 		//adding the floor to the building trough the floor builder
-		Lives = (byte)floorBuilder.BuildFloor (newFloor);
+		Lives = GameHelper.BitsInByte(floorBuilder.BuildFloor (newFloor));
 
 		currentIndex = Random.value > 0.5f ? 0 : (int)Game.MAX_COLUMNS - Lives;
 		currentTick = 0;

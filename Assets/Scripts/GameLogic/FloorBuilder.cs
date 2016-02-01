@@ -38,14 +38,17 @@ public class FloorBuilder : MonoBehaviour {
 		buildingColor = _color;
 	}
 
-	public int BuildFloor(byte[] _newFloor) {
+	public byte BuildFloor(byte _newFloor) {
 		//keep in mind that the newFloor parameter will be updated as it is a reference
-		building.AddFloor (_newFloor);
-		
+		_newFloor = building.AddFloor (_newFloor);
+	
 		//Adding the visuals
-		for (int i = 0; i < _newFloor.Length; i++) {
-			if(_newFloor[i] == 1) {
-				Vector2 fallPosition = GameHelper.BuildingToWorldSpace(i,building.TotalFloors - 1,-Game.MAX_COLUMNS * 0.5f);
+		for (int i = 0; i < Game.MAX_COLUMNS; i++) {
+			if(GameHelper.IsBitOn(_newFloor,i)) {
+
+				//a byte is left to right, we read right to left.
+				//so we have to invert i by doing this: Game.MAX_COLUMNS - 1 - i
+				Vector2 fallPosition = GameHelper.BuildingToWorldSpace(Game.MAX_COLUMNS - 1 - i,building.TotalFloors - 1,-Game.MAX_COLUMNS * 0.5f);
 				GameObject apartmentGmo = Instantiate(buildingBlock) as GameObject;
 				apartmentGmo.transform.parent = buildingOrigin;
 
@@ -63,18 +66,13 @@ public class FloorBuilder : MonoBehaviour {
 			}
 		}
 
-		int placedFloors = 0;
-		foreach (byte b in _newFloor) {
-			placedFloors += b;
-		}
-
 		CurrentHeight = Building.TotalFloors + transform.position.y;
 
 		if (scoreText != null) {
 			scoreText.SetText(building.TotalFloors.ToString());
 		}
 
-		return placedFloors;
+		return _newFloor;
 	}
 
 	IEnumerator IPlayLandSound() {
