@@ -8,6 +8,10 @@ public class FloorBuilder : MonoBehaviour {
 	[SerializeField] private GameObject buildingBlock = null;
 	[SerializeField] private Transform buildingOrigin = null;
 	[SerializeField] private TextUpdater scoreText = null;
+	[SerializeField] private AudioClip fallSound = null;
+	[SerializeField] private AudioClip landSound = null;
+	private AudioSource audioSource = null;
+		
 	private Building building = new Building();
 
 	private Color buildingColor = Color.white;
@@ -26,6 +30,8 @@ public class FloorBuilder : MonoBehaviour {
 		if (scoreText != null) {
 			scoreText.SetText(building.TotalFloors.ToString());
 		}
+
+		audioSource = GetComponent<AudioSource> ();
 	}
 
 	public void SetColor(Color _color) {
@@ -48,7 +54,12 @@ public class FloorBuilder : MonoBehaviour {
 				Apartment apartment = apartmentGmo.GetComponent<Apartment> ();
 				apartment.PlaceApartment (fallPosition, true);
 				apartment.UpdateColors (buildingColor);
+
+				audioSource.clip = fallSound;
+				audioSource.Play ();
+
 				Camera.main.GetComponent<GameCamera> ().Shake (0.1f,0.15f);
+				StartCoroutine (IPlayLandSound());
 			}
 		}
 
@@ -64,6 +75,12 @@ public class FloorBuilder : MonoBehaviour {
 		}
 
 		return placedFloors;
+	}
+
+	IEnumerator IPlayLandSound() {
+		yield return new WaitForSeconds (0.15f);
+		audioSource.clip = landSound;
+		audioSource.Play ();
 	}
 
 

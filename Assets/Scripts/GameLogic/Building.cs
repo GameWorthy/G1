@@ -20,9 +20,8 @@ public class Building {
 	public byte[] AddFloor(byte[] _newFloor) {
 		floors.Add (_newFloor);
 		if (floors.Count > 1) {//if we have a previous floor
-			SubtractFromFloor(_newFloor, floors[floors.Count - 2]);
+			SubtractFromFloor (_newFloor, floors [floors.Count - 2]);
 		}
-
 		return _newFloor;
 	}
 
