@@ -22,7 +22,6 @@ public class LobbyListScene : NetworkLobbyManager {
 
 	private bool isHosting = false;
 	private PlayerTag localPlayer = null;
-	private int connectedClients = 0;
 
 	void OnEnable() {
 		Instance = this;

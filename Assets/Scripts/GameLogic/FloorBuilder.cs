@@ -4,10 +4,8 @@ using DG.Tweening;
 
 public class FloorBuilder : MonoBehaviour {
 
-	
 	[SerializeField] private GameObject buildingBlock = null;
 	[SerializeField] private Transform buildingOrigin = null;
-	[SerializeField] private TextUpdater scoreText = null;
 	[SerializeField] private AudioClip fallSound = null;
 	[SerializeField] private AudioClip landSound = null;
 	private AudioSource audioSource = null;
@@ -27,10 +25,6 @@ public class FloorBuilder : MonoBehaviour {
 	}
 
 	void Start() {
-		if (scoreText != null) {
-			scoreText.SetText(building.TotalFloors.ToString());
-		}
-
 		audioSource = GetComponent<AudioSource> ();
 	}
 
@@ -67,10 +61,6 @@ public class FloorBuilder : MonoBehaviour {
 		}
 
 		CurrentHeight = Building.TotalFloors + transform.position.y;
-
-		if (scoreText != null) {
-			scoreText.SetText(building.TotalFloors.ToString());
-		}
 			
 		return _newFloor;
 	}
@@ -80,7 +70,5 @@ public class FloorBuilder : MonoBehaviour {
 		audioSource.clip = landSound;
 		audioSource.Play ();
 	}
-
-
 
 }

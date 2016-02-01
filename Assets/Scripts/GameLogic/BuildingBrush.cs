@@ -92,25 +92,20 @@ public class BuildingBrush : MonoBehaviour {
 
 		//adding the floor to the building trough the floor builder
 		Lives = GameHelper.BitsInByte(floorBuilder.BuildFloor (newFloor));
+		onPlaceFloor.Invoke (floorBuilder.CurrentHeight);
 
 		currentIndex = Random.value > 0.5f ? 0 : (int)Game.MAX_COLUMNS - Lives;
 		currentTick = 0;
 		SetBrushPosition ();
 
 		if (lives <= 0) {
-			StartCoroutine(PLACEHOLDERRESTART());
+			onLoseAllLifes.Invoke ();
 		}
 	}
 
 	void OnDestroy() {
 		InputReader.onTap -= AddFloor;
 	}
-
-	IEnumerator PLACEHOLDERRESTART() {
-		yield return new WaitForSeconds (2);
-		LevelLoader.Instance.LoadScene ("GameSceneSingleplayer");
-	}
-	
 
 	void SetBrushEnable(bool _value) {
 		Debug.Log (transform.childCount);
@@ -119,4 +114,10 @@ public class BuildingBrush : MonoBehaviour {
 		}
 	}
 
+	//Hooks
+	public d_onLoseAllLifes onLoseAllLifes = () => {};
+	public delegate void d_onLoseAllLifes();
+
+	public d_onPlaceFloor onPlaceFloor = (float _height) => {};
+	public delegate void d_onPlaceFloor(float _height);
 }
