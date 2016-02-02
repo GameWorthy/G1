@@ -31,6 +31,11 @@ public class Game : MonoBehaviour {
 		}
 	}
 
+	public int HighScore {
+		get { return gameData.highScore; }
+		set { gameData.highScore = value; }
+	}
+
 	public int Tick {
 		get;
 		set;
@@ -64,9 +69,6 @@ public class Game : MonoBehaviour {
 		}
 
 		ApplySoundSettings ();
-
-		//HACK: find a better way to handle on game loading event
-		PlayGameMusic (SceneManager.GetActiveScene().buildIndex == 2);
 	}
 
 	void OnLevelWasLoaded(int level) {
@@ -78,7 +80,7 @@ public class Game : MonoBehaviour {
 
 	}
 
-	void PlayGameMusic(bool playGame) {
+	public void PlayGameMusic(bool playGame) {
 		if (playGame) {
 			gameMusic.PlayMusic (GameMusic.MusicType.GAME);
 		} else {
@@ -101,18 +103,6 @@ public class Game : MonoBehaviour {
 		PlayerPrefs.SetInt("firstTimeLoadingGameScene",0);
 		MemoryCard.Save (new GameData(), "game");
 		gameData = (GameData) MemoryCard.Load ("game");
-	}
-
-	public void OnGameOver(int _achievedHeight, int _playedBrontoID) {
-
-		//Highscore
-		//bool isHighScore = false;
-		if (_achievedHeight > gameData.highScore) {
-			gameData.highScore = _achievedHeight;
-			//isHighScore = true;
-		}
-
-		Save ();
 	}
 
 	public void ToggleSound () {
