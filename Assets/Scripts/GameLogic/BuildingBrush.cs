@@ -65,6 +65,7 @@ public class BuildingBrush : MonoBehaviour {
 			GameObject brushGmo = Instantiate(brushBlock) as GameObject;
 			brushGmo.transform.parent = transform;
 			brushGmo.transform.localPosition = position;
+			brushGmo.GetComponent<SpriteRenderer> ().color = Game.Instance.PlayerColor;
 		}
 	}
 
