@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 9609710cfbb5b4c4c962aec6bac0f4cc
-timeCreated: 1453760754
+timeCreated: 1454474971
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -46,6 +46,8 @@ TextureImporter:
     21300078: twitter
     21300080: gw
     21300082: versus
+    21300084: paint_brush
+    21300086: sts
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -381,21 +383,14 @@ TextureImporter:
     - name: Title
       rect:
         serializedVersion: 2
-        x: 1
-        y: 2
-        width: 42
-        height: 34
+        x: 9
+        y: 3
+        width: 41
+        height: 25
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -21, y: 17}
-        - {x: -21, y: -3}
-        - {x: -13, y: -16}
-        - {x: -12, y: -17}
-        - {x: 15, y: -17}
-        - {x: 21, y: -7}
-        - {x: 21, y: 17}
+      outline: []
     - name: dialog_box
       rect:
         serializedVersion: 2
@@ -447,6 +442,28 @@ TextureImporter:
         y: 23
         width: 7
         height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: paint_brush
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 42
+        width: 9
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: sts
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 27
+        width: 33
+        height: 22
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

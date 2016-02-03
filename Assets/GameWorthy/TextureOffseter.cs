@@ -14,6 +14,10 @@ namespace GameWorthy {
 			bg.material.SetTextureOffset ("_MainTex", new Vector2(direction.x * off,direction.y * off));
 		}
 
+		public void SetDirection(Vector2 _dir) {
+			direction = _dir;
+		}
+
 	}
 	
 }

@@ -12,6 +12,9 @@ public class SinglePlayerScene : MonoBehaviour {
 	[SerializeField] private Text highScoreText = null;
 	[SerializeField] private Button playButton = null;
 	[SerializeField] private ParticleSystem explosionParticle = null;
+	[SerializeField] private AudioClip highScoreSound = null;
+
+	private AudioSource audioSource = null;
 
 	private float yOffset = -3.5f;
 	private int height = 0;
@@ -40,6 +43,8 @@ public class SinglePlayerScene : MonoBehaviour {
 		}
 
 		highScoreText.color = Game.Instance.PlayerColor;
+
+		audioSource = GetComponent<AudioSource> ();
 
 		Game.Instance.PlayGameMusic (true);
 	}
@@ -74,6 +79,9 @@ public class SinglePlayerScene : MonoBehaviour {
 			emission.enabled = true;
 			explosionParticle.Play ();
 			highScoreBar.gameObject.SetActive (false);
+
+			audioSource.clip = highScoreSound;
+			audioSource.Play ();
 		}
 	}
 

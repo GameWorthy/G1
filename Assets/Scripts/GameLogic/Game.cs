@@ -58,7 +58,7 @@ public class Game : MonoBehaviour {
 	}
 	
 	void GameStart() {
-		//Application.targetFrameRate = 60;
+		Application.targetFrameRate = 60;
 		Screen.orientation = ScreenOrientation.Portrait;
 
 		MemoryCard.Initiate ();

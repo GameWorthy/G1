@@ -8,6 +8,7 @@ public class FloorBuilder : MonoBehaviour {
 	[SerializeField] private Transform buildingOrigin = null;
 	[SerializeField] private AudioClip fallSound = null;
 	[SerializeField] private AudioClip landSound = null;
+	[SerializeField] private AudioClip missSound = null;
 	private AudioSource audioSource = null;
 		
 	private Building building = new Building();
@@ -52,15 +53,28 @@ public class FloorBuilder : MonoBehaviour {
 				apartment.PlaceApartment (fallPosition, true);
 				apartment.UpdateColors (buildingColor);
 
-				audioSource.clip = fallSound;
-				audioSource.Play ();
 
 				Camera.main.GetComponent<GameCamera> ().Shake (0.1f,0.15f);
-				StartCoroutine (IPlayLandSound());
 			}
 		}
 
 		CurrentHeight = Building.TotalFloors + transform.position.y;
+
+		if (_newFloor > 0) {
+			
+			//Translating this math: 0.15 is the pitch step, 1 is the default pitch, so for less lifes
+			//we have the higher the pitch
+			audioSource.pitch = -(GameHelper.BitsInByte (_newFloor) - 3) * 0.15f + 1;
+			audioSource.clip = fallSound;
+			audioSource.Play ();
+			StartCoroutine (IPlayLandSound ());
+		} else {
+			//no floors build, make loss sound
+			audioSource.pitch = 1;
+			audioSource.clip = missSound;
+			audioSource.Play();
+
+		}
 			
 		return _newFloor;
 	}
