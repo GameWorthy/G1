@@ -4,43 +4,30 @@ using DG.Tweening;
 
 public class GameMusic : MonoBehaviour {
 
-	public enum MusicType {
-		MENU,
-		GAME,
-		NONE
-	}
+	//[SerializeField] private AudioSource chords = null;
+	[SerializeField] private AudioSource bass = null;
+	[SerializeField] private AudioSource drum = null;
+	[SerializeField] private AudioSource hats = null;
 
-	[SerializeField] private AudioClip menuMusic = null;
-	[SerializeField] private AudioClip gameMusic = null;
-	[SerializeField] private AudioSource audioSource = null;
-	private MusicType currentlyPlaying = MusicType.NONE;
+	public void PlayMusic(int _level) {
 
-	public void PlayMusic(MusicType _type) {
-		if (currentlyPlaying == _type) {
-			return;
-		} else {
-			currentlyPlaying = _type;
-			switch(currentlyPlaying) {
-				case MusicType.GAME:
-					FadeToMusic(gameMusic);
-					break;
-				case MusicType.MENU:
-					FadeToMusic(menuMusic);
-					break;
-			}
+		byte bassVolume = 0;
+		byte drumVolume = 0;
+		byte hatsVolume = 0;
+
+		if (_level > 3) {
+			bassVolume = 1;
 		}
-	}
+		if (_level > 8) {
+			drumVolume = 1;
+		}
+		if (_level > 13) {
+			hatsVolume = 1;
+		}
 
-	void FadeToMusic(AudioClip _clipToPlay) {
-		StartCoroutine (IFadeToMusic (_clipToPlay));
-	}
+		bass.DOFade (bassVolume,1);
+		drum.DOFade (drumVolume,1);
+		hats.DOFade (hatsVolume,1);
 
-	IEnumerator IFadeToMusic(AudioClip _clipToPlay) {
-		audioSource.DOFade (0, 1);
-		yield return new WaitForSeconds(1);
-		audioSource.clip = _clipToPlay;
-		audioSource.Play ();
-		audioSource.DOFade (1, 1);
 	}
-
 }

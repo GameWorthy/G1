@@ -46,7 +46,7 @@ public class SinglePlayerScene : MonoBehaviour {
 
 		audioSource = GetComponent<AudioSource> ();
 
-		Game.Instance.PlayGameMusic (true);
+		Game.Instance.PlayGameMusic (0);
 	}
 
 	void OnGameOver() {
@@ -83,6 +83,8 @@ public class SinglePlayerScene : MonoBehaviour {
 			audioSource.clip = highScoreSound;
 			audioSource.Play ();
 		}
+
+		Game.Instance.PlayGameMusic ((int)_height);
 	}
 
 	void OnDestroy() {

@@ -75,17 +75,12 @@ public class Game : MonoBehaviour {
 		if (!IsInstance()) return;
 		ApplySoundSettings ();
 
-		//HACK: find a better way to handle on game loading event
-		PlayGameMusic (level == 2);
+		PlayGameMusic (0);
 
 	}
 
-	public void PlayGameMusic(bool playGame) {
-		if (playGame) {
-			gameMusic.PlayMusic (GameMusic.MusicType.GAME);
-		} else {
-			gameMusic.PlayMusic (GameMusic.MusicType.MENU);
-		}
+	public void PlayGameMusic(int _level) {
+		gameMusic.PlayMusic (_level);
 	}
 	
 	void Update() {
